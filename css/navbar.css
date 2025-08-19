@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #181a1b;
+    color: #f3f3f3;
+}
+.topbar {
+    background: #23272a;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    box-shadow:
+        0 2px 16px 0 rgba(255,255,255,0.10),
+        0 4px 24px 0 rgba(200,200,200,0.08),
+        0 0 32px 8px rgba(0, 174, 255, 0.18),
+        0 0 64px 16px rgba(0, 174, 255, 0.10);
+    animation: topbar-fade-in 0.7s cubic-bezier(0.4,0,0.2,1), topbar-glow 2.5s ease-in-out infinite alternate;
+}
+@keyframes topbar-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes topbar-glow {
+    0% {
+        box-shadow:
+            0 2px 16px 0 rgba(255,255,255,0.10),
+            0 4px 24px 0 rgba(200,200,200,0.08),
+            0 0 32px 8px rgba(0, 174, 255, 0.18),
+            0 0 64px 16px rgba(0, 174, 255, 0.10);
+    }
+    100% {
+        box-shadow:
+            0 2px 24px 0 rgba(255,255,255,0.13),
+            0 4px 32px 0 rgba(200,200,200,0.12),
+            0 0 48px 16px rgba(0, 174, 255, 0.28),
+            0 0 96px 32px rgba(0, 174, 255, 0.16);
+    }
+}
+.topbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    transition: color 0.3s;
+}
+.topbar .logo:hover {
+    color: #b9bbbe;
+}
+.topbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+.topbar nav a {
+    color: #e4e6eb;
+    text-decoration: none;
+    font-size: 1.08rem;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: 
+        color 0.25s cubic-bezier(0.4,0,0.2,1),
+        background 0.25s cubic-bezier(0.4,0,0.2,1),
+        box-shadow 0.25s cubic-bezier(0.4,0,0.2,1),
+        transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: navlink-fade-in 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.topbar nav a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 2.5px;
+    background: linear-gradient(90deg, #fff 60%, #b9bbbe 100%);
+    border-radius: 2px;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: 
+        transform 0.28s cubic-bezier(0.4,0,0.2,1),
+        opacity 0.18s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+}
+.topbar nav a:hover::after,
+.topbar nav a:focus::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+.topbar nav a:hover, .topbar nav a:focus {
+    color: #fff;
+    background: transparent;
+    box-shadow: none;
+    text-decoration: none;
+    transform: none;
+}
+.topbar nav a:nth-child(1) { animation-delay: 0.15s; }
+.topbar nav a:nth-child(2) { animation-delay: 0.25s; }
+.topbar nav a:nth-child(3) { animation-delay: 0.35s; }
+.topbar nav a:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes navlink-fade-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
